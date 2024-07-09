@@ -16,6 +16,7 @@ resource "aws_route_table" "private-route" {
       "network_interface_id"       = ""
       "transit_gateway_id"         = ""
       "vpc_endpoint_id"            = ""
+      "core_network_arn"           = ""
     },
     {
       cidr_block                   = "0.0.0.0/0"
@@ -31,6 +32,7 @@ resource "aws_route_table" "private-route" {
       "network_interface_id"       = ""
       "transit_gateway_id"         = ""
       "vpc_endpoint_id"            = ""
+      "core_network_arn"           = ""
     }
   ]
 
@@ -57,6 +59,7 @@ resource "aws_route_table" "public-route" {
       "network_interface_id"       = ""
       "transit_gateway_id"         = ""
       "vpc_endpoint_id"            = ""
+      "core_network_arn"           = ""
     },
     {
       cidr_block                   = "0.0.0.0/0"
@@ -72,6 +75,7 @@ resource "aws_route_table" "public-route" {
       "network_interface_id"       = ""
       "transit_gateway_id"         = ""
       "vpc_endpoint_id"            = ""
+      "core_network_arn"           = ""
     }
   ]
 
