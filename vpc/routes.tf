@@ -1,7 +1,6 @@
 resource "aws_route_table" "private-route" {
   vpc_id = aws_vpc.main.id
-     route
-     {
+     route = {
        cidr_block                 = "0.0.0.0/0"
        vpc_peering_connection_id  = ""
        carrier_gateway_id         = ""
@@ -64,8 +63,7 @@ resource "aws_route_table" "public-route" {
   #        "vpc_endpoint_id"            = ""
   #        "core_network_arn"           = ""
   #      },
-  route
-  {
+  route ={
     cidr_block                 = "0.0.0.0/0"
     vpc_peering_connection_id  = ""
     carrier_gateway_id         = ""
