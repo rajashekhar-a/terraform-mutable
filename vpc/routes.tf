@@ -30,7 +30,7 @@ resource "aws_route_table" "private-route" {
       "network_interface_id"       = ""
       "transit_gateway_id"         = ""
       "vpc_endpoint_id"            = ""
-      "vpc_peering_connection_id"  = ""
+      "nat_gateway_id"             = ""
     }
   ]
 
@@ -109,6 +109,7 @@ resource "aws_route_table" "public-route" {
       "transit_gateway_id"         = ""
       "vpc_endpoint_id"            = ""
       "vpc_peering_connection_id"  = ""
+      "nat_gateway_id"             = ""
     }
   ]
 
