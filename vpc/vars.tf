@@ -6,3 +6,4 @@ variable "VPC_CIDR_ADDON" {}
 variable "PUBLIC_SUBNETS" {}
 variable "DEFAULT_VPC_ID" {}
 variable "DEFAULT_VPC_CIDR" {}
+variable "core_network_arn" {}
