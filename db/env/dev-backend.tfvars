@@ -1,3 +1,3 @@
-bucket = "terraform-mutable"
-key    = "terraform-mutable/db/dev/terraform.tfstate"
+bucket = "terraform-mutable1"
+key    = "terraform-mutable1/db/dev/terraform.tfstate"
 region = "us-east-1"
