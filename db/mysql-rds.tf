@@ -1,6 +1,7 @@
 resource "aws_db_instance" "mysql" {
   allocated_storage    = 10
-  db_name              = "devdbmysql"
+  identifier           = "mysql-${var.ENV}"
+  db_name              = "mysql"
   engine               = "mysql"
   engine_version       = "5.7"
   instance_class       = "db.t3.micro"
@@ -50,5 +51,14 @@ resource "aws_security_group" "mysql" {
 
   tags = {
     Name = "mysql-${var.ENV}"
+  }
+}
+
+resource "aws_db_subnet_group" "subnet-group" {
+  name       = "mysql-${var.ENV}"
+  subnet_ids = data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNETS_IDS
+
+  tags = {
+    Name = "mysqldb-subnet-group-${var.ENV}"
   }
 }
