@@ -7,3 +7,4 @@ variable "PUBLIC_SUBNETS" {}
 variable "DEFAULT_VPC_ID" {}
 variable "DEFAULT_VPC_CIDR" {}
 variable "DEFAULT_VPC_ROUTE_TABLE_ID" {}
+variable "INTERNAL_HOSTEDZONE_ID" {}

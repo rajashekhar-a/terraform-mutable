@@ -45,7 +45,7 @@ resource "aws_route_table" "public-route" {
 #  route_table_id            = var.DEFAULT_VPC_ROUTE_TABLE_ID
 #  destination_cidr_block    = var.VPC_CIDR_ADDON
 #  vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
-#}
+#}add
 
 resource "aws_route" "route-from-default-vpc" {
   count                     = length(local.association-list)
