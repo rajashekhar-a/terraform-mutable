@@ -83,3 +83,11 @@ resource "null_resource" "schema-apply" {
 
   }
 }
+
+data "aws_secretsmanager_secret" "secret" {
+  name = "${var.ENV}"
+}
+
+output "username" {
+  value = data.aws_secretsmanager_secret.secret.name
+}
