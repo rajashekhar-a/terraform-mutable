@@ -14,3 +14,9 @@ data "aws_secretsmanager_secret" "secrets" {
 data "aws_secretsmanager_secret_version" "secrets-version" {
   secret_id = data.aws_secretsmanager_secret.secrets.id
 }
+
+data "aws_ami" "id" {
+  most_recent      = true
+  name_regex       = "^Centos-8-DevOps-Practice"
+  owners           = ["973714476881"]
+}
