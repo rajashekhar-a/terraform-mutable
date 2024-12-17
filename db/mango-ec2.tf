@@ -69,5 +69,8 @@ resource "null_resource" "schema-apply" {
       user = local.ssh_user
       password = local.ssh_pass
     }
+    inline = [
+      "ansible-pull -U https://github.com/rajashekhar-a/ansible.git roboshop-pull.yml  -e COMPONENT=mongodb"
+    ]
   }
 }
