@@ -92,12 +92,7 @@ data "aws_secretsmanager_secret_versions" "secret-versions" {
   secret_id = data.aws_secretsmanager_secret.secret.id
 }
 
-resource "null_resource" "test" {
-  provisioner "local-exec" {
-    command = "echo ${data.aws_secretsmanager_secret_versions.secret-versions.secret_id} >/tmp/1"
-  }
-}
-
-output "example" {
-  value = jsondecode(data.aws_secretsmanager_secret_versions.secret-versions.secret_id)["RDS_USER"]
+resource "local_file" "foo" {
+  content  = jsondecode(data.aws_secretsmanager_secret_versions.secret-versions)["RDS_USER"]
+  filename = "/tmp/1"
 }
