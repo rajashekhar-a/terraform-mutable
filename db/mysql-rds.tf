@@ -93,6 +93,6 @@ data "aws_secretsmanager_secret_versions" "secret-versions" {
 }
 
 resource "local_file" "foo" {
-  content  = jsondecode(data.aws_secretsmanager_secret_versions.secret-versions)["RDS_USER"]
+  content  = jsondecode(data.aws_secretsmanager_secret_versions.secret-versions.secret_string)["RDS_USER"]
   filename = "/tmp/1"
 }
