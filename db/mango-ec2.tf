@@ -73,15 +73,15 @@ resource "aws_route53_record" "mongodb" {
   records = [aws_spot_instance_request.mongo-db.private_ip]
 }
 
-resource "null_resource" "schema-apply" {
-  provisioner "remote-exec" {
-    connection {
-      host = aws_spot_instance_request.mongo-db.private_ip
-      user = local.ssh_user
-      password = local.ssh_pass
-    }
-    inline = [
-      "ansible-pull -U https://github.com/rajashekhar-a/ansible.git roboshop-pull.yml  -e COMPONENT=mongodb"
-    ]
-  }
-}
+#resource "null_resource" "schema-apply" {
+#  provisioner "remote-exec" {
+#    connection {
+#      host = aws_spot_instance_request.mongo-db.private_ip
+#      user = local.ssh_user
+#      password = local.ssh_pass
+#    }
+#    inline = [
+#      "ansible-pull -U https://github.com/rajashekhar-a/ansible.git roboshop-pull.yml  -e COMPONENT=mongodb"
+#    ]
+#  }
+#}

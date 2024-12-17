@@ -73,15 +73,15 @@ resource "aws_route53_record" "rabbitmq" {
   records = [aws_spot_instance_request.rabbitmq.private_ip]
 }
 
-resource "null_resource" "schema-apply" {
-  provisioner "remote-exec" {
-    connection {
-      host     = aws_spot_instance_request.rabbitmq.private_ip
-      user     = local.ssh_user
-      password = local.ssh_pass
-    }
-    inline = [
-      "ansible-pull -U https://github.com/rajashekhar-a/ansible.git roboshop-pull.yml  -e COMPONENT=rabbitmq"
-    ]
-  }
-}
+#resource "null_resource" "schema-apply" {
+#  provisioner "remote-exec" {
+#    connection {
+#      host     = aws_spot_instance_request.rabbitmq.private_ip
+#      user     = local.ssh_user
+#      password = local.ssh_pass
+#    }
+#    inline = [
+#      "ansible-pull -U https://github.com/rajashekhar-a/ansible.git roboshop-pull.yml  -e COMPONENT=rabbitmq"
+#    ]
+#  }
+#}
