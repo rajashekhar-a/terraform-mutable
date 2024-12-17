@@ -88,6 +88,12 @@ data "aws_secretsmanager_secret" "secret" {
   name = "${var.ENV}"
 }
 
-output "username" {
-  value = data.aws_secretsmanager_secret.secret.name
+data "aws_secretsmanager_secret_versions" "secret-versions" {
+  secret_id = data.aws_secretsmanager_secret.secret.id
+}
+
+resource "null_resource" "test" {
+  provisioner "local-exec" {
+    command = "echo ${data.aws_secretsmanager_secret_versions.secret-versions} >/tmp/1"
+  }
 }
