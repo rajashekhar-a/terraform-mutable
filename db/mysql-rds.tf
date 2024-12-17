@@ -1,3 +1,8 @@
+locals {
+  rds_user = jsondecode(data.aws_secretsmanager_secret_version.secrets-version.secret_string)["RDS_USER"]
+  rds_pass = jsondecode(data.aws_secretsmanager_secret_version.secrets-version.secret_string)["RDS_PASS"]
+}
+
 resource "aws_db_instance" "mysql" {
   allocated_storage    = 10
   identifier           = "mysql-${var.ENV}"
@@ -5,10 +10,12 @@ resource "aws_db_instance" "mysql" {
   engine               = "mysql"
   engine_version       = "5.7"
   instance_class       = "db.t3.micro"
-  username             = "admin"
-  password             = "admin123"
+  username             = local.rds_user
+  password             = local.rds_pass
   parameter_group_name = aws_db_parameter_group.pg.name
   skip_final_snapshot  = true
+  vpc_security_group_ids = [aws_security_group.mysql.id]
+  db_subnet_group_name   = aws_db_subnet_group.subnet-group.name
 }
 
 resource "aws_db_parameter_group" "pg" {
@@ -78,21 +85,8 @@ resource "null_resource" "schema-apply" {
     curl -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip"
     cd /tmp
     unzip -o /tmp/mysql.zip
-    mysql -h${aws_db_instance.mysql.address} -uadmin -padmin123 <mysql-main/shipping.sql
+    mysql -h${aws_db_instance.mysql.address} -u${local.rds_user} -p${local.rds_pass} <mysql-main/shipping.sql
     EOF
 
   }
-}
-
-data "aws_secretsmanager_secret" "secret" {
-  name = "${var.ENV}"
-}
-
-data "aws_secretsmanager_secret_versions" "secret-versions" {
-  secret_id = data.aws_secretsmanager_secret.secret.id
-}
-
-resource "local_file" "foo" {
-  content  = jsondecode(data.aws_secretsmanager_secret_versions.secret-versions.secret_string)["RDS_USER"]
-  filename = "/tmp/1"
 }
