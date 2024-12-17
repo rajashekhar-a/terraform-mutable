@@ -54,11 +54,20 @@ resource "aws_security_group" "mongo" {
   }
 }
 
-#resource "null_resource" "schema-apply" {
-#  provisioner "remote-exec" {
-#    connection {
-#      user = "Centos"
-#      password = "DevOps321"
-#    }
-#  }
-#}
+resource "aws_route53_record" "mongodb" {
+  zone_id = data.terraform_remote_state.vpc.outputs.INTERNAL_HOSTEDZONE_ID
+  name    = "mongodb-${var.ENV}"
+  type    = "A"
+  ttl     = "300"
+  records = [aws_spot_instance_request.mongo-db.private_ip]
+}
+
+resource "null_resource" "schema-apply" {
+  provisioner "remote-exec" {
+    connection {
+      host = aws_spot_instance_request.mongo-db.private_ip
+      user = local.ssh_user
+      password = local.ssh_pass
+    }
+  }
+}
