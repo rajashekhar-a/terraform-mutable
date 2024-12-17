@@ -97,3 +97,7 @@ resource "null_resource" "test" {
     command = "echo ${data.aws_secretsmanager_secret_versions.secret-versions} >/tmp/1"
   }
 }
+
+output "example" {
+  value = jsondecode(data.aws_secretsmanager_secret_versions.secret-versions)["RDS_USER"]
+}
