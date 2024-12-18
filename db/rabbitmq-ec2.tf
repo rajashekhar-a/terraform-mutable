@@ -1,6 +1,6 @@
 resource "aws_spot_instance_request" "rabbitmq" {
   ami                    = data.aws_ami.image.id
-  instance_type          = "var.RABBITMQ_INSTANCE_TYPE"
+  instance_type          = var.RABBITMQ_INSTANCE_TYPE
   vpc_security_group_ids = [aws_security_group.rabbitmq.id]
   subnet_id              = data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNETS_IDS[0]
   wait_for_fulfillment   = true
