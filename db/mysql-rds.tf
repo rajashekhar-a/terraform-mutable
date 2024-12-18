@@ -34,7 +34,7 @@ resource "aws_security_group" "mysql" {
       from_port        = 3306
       to_port          = 3306
       protocol         = "tcp"
-      cidr_blocks      = ["10.0.0.0/16"]
+      cidr_blocks      = local.ALL_CIDR
       ipv6_cidr_blocks = []
       prefix_list_ids  = []
       security_groups  = []

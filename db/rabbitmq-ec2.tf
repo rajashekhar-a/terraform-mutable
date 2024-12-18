@@ -27,7 +27,7 @@ resource "aws_security_group" "rabbitmq" {
       from_port        = 5672
       to_port          = 5672
       protocol         = "tcp"
-      cidr_blocks      = ["0.0.0.0/0"]
+      cidr_blocks      = local.ALL_CIDR
       ipv6_cidr_blocks = []
       prefix_list_ids  = []
       security_groups  = []
@@ -38,7 +38,7 @@ resource "aws_security_group" "rabbitmq" {
       from_port        = 22
       to_port          = 22
       protocol         = "tcp"
-      cidr_blocks      = ["0.0.0.0/0"]
+      cidr_blocks      = local.ALL_CIDR
       ipv6_cidr_blocks = []
       prefix_list_ids  = []
       security_groups  = []

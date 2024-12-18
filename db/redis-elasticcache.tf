@@ -31,7 +31,7 @@ resource "aws_security_group" "redis" {
       from_port        = 6379
       to_port          = 6379
       protocol         = "tcp"
-      cidr_blocks      = ["0.0.0.0/0"]
+      cidr_blocks      = local.ALL_CIDR
       ipv6_cidr_blocks = []
       prefix_list_ids  = []
       security_groups  = []
