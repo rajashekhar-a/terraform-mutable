@@ -10,7 +10,7 @@ resource "aws_spot_instance_request" "mongo-db" {
   }
 }
 
-resource "aws_ec2_tag" "example" {
+resource "aws_ec2_tag" "mangodb" {
   resource_id = aws_spot_instance_request.mongo-db.id
   key         = "Name"
   value       = "mongodb-${var.ENV}"

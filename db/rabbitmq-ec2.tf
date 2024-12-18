@@ -10,7 +10,7 @@ resource "aws_spot_instance_request" "rabbitmq" {
   }
 }
 
-resource "aws_ec2_tag" "example" {
+resource "aws_ec2_tag" "rabbitmq" {
   resource_id = aws_spot_instance_request.rabbitmq.id
   key         = "Name"
   value       = "rabbitmq-${var.ENV}"
