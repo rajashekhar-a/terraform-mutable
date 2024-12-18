@@ -8,7 +8,7 @@ resource "aws_lb" "private-alb" {
   enable_deletion_protection = false
 
   tags = {
-    Environment = "private-alb-{var.ENV}"
+    Environment = "roboshop-private-${var.ENV}"
   }
 }
 

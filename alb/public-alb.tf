@@ -8,7 +8,7 @@ resource "aws_lb" "public-alb" {
   enable_deletion_protection = false
 
   tags = {
-    Environment = "public-alb-{var.ENV}"
+    Environment = "roboshop-public-${var.ENV}"
   }
 }
 
