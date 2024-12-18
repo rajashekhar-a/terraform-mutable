@@ -1,5 +1,5 @@
 resource "aws_lb" "private-alb" {
-  name               = "private_alb_{var.ENV}"
+  name               = "roboshop-private-${var.ENV}"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.private-alb.id]
