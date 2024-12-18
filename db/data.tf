@@ -17,6 +17,6 @@ data "aws_secretsmanager_secret_version" "secrets-version" {
 
 data "aws_ami" "id" {
   most_recent      = true
-  name_regex       = "^Centos-8-DevOps-Practice"
+  name_regex       = "^Centos-8"
   owners           = ["973714476881"]
 }
