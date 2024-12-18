@@ -1,5 +1,5 @@
 resource "aws_lb" "public-alb" {
-  name               = "public-alb-{var.ENV}"
+  name               = "public_alb_{var.ENV}"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.public-alb.id]
