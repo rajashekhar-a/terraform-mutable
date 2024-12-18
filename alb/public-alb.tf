@@ -3,7 +3,7 @@ resource "aws_lb" "public-alb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.public-alb.id]
-  subnets            = data.terraform_remote_state.vpc.outputs.public_SUBNETS_IDS
+  subnets            = data.terraform_remote_state.vpc.outputs.PUBLIC_SUBNETS_IDS
 
   enable_deletion_protection = false
 
