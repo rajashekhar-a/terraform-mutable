@@ -1,5 +1,5 @@
 resource "aws_spot_instance_request" "mongo-db" {
-  ami                  = data.aws_ami.id
+  ami                  = data.aws_ami.image.id
   instance_type        = "var.MONGODB_INSTANCE_TYPE"
   vpc_security_group_ids = [aws_security_group.mongo.id]
   subnet_id            = data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNETS_IDS[0]
