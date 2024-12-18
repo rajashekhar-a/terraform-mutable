@@ -1,5 +1,5 @@
 resource "aws_elasticache_cluster" "redis" {
-  cluster_id           = "rabbitmq-${var.ENV}"
+  cluster_id           = "redis-${var.ENV}"
   engine               = "redis"
   node_type            = var.REDIS_INSTANCE_TYPE
   num_cache_nodes      = 1
@@ -11,7 +11,7 @@ resource "aws_elasticache_cluster" "redis" {
 }
 
 resource "aws_elasticache_parameter_group" "redis-pg" {
-  name   = "rabbitmq-${var.ENV}"
+  name   = "redis-${var.ENV}"
   family = "redis6.x"
 }
 
