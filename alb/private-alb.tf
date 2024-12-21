@@ -49,3 +49,19 @@ resource "aws_security_group" "private-alb" {
     Name = "roboshop-private-alb-${var.ENV}"
   }
 }
+
+resource "aws_lb_listener" "private-listener" {
+  load_balancer_arn = aws_lb.private-alb.arn
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    type = "fixed-response"
+
+    fixed_response {
+      content_type = "text/plain"
+      message_body = "OK"
+      status_code  = "200"
+    }
+  }
+}
