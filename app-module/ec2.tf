@@ -21,7 +21,7 @@ resource "aws_instance" "od" {
 
 resource "aws_ec2_tag" "tag" {
   count       = length(local.INSTANCE_IDS)
-  resource_id = element(aws_instance.od.*.id, count.index)
+  resource_id = element(local.INSTANCE_IDS, count.index)
   key         = "Name"
   value       = "${var.COMPONENT}-${var.ENV}"
 }
