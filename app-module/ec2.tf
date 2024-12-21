@@ -27,6 +27,6 @@ resource "aws_ec2_tag" "tag" {
 }
 
 locals {
-  INSTANCE_IDS = concat(aws_spot_instance_request.spot-instance.*.id, aws_instance.od.*.id)
+  INSTANCE_IDS = concat(aws_spot_instance_request.spot-instance.*.spot_instance_id, aws_instance.od.*.id)
   PRIVATE_IPS = concat(aws_spot_instance_request.spot-instance.*.private_ip, aws_instance.od.*.private_ip)
 }
