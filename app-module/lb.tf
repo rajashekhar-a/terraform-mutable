@@ -1,6 +1,6 @@
 resource "aws_lb_target_group" "tg" {
   name     = "${var.COMPONENT}-${var.ENV}"
-  port     = 80
+  port     = var.PORT
   protocol = "HTTP"
   vpc_id   = data.terraform_remote_state.vpc.outputs.VPC_ID
 }
