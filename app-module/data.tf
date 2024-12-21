@@ -22,7 +22,7 @@ data "terraform_remote_state" "alb" {
 #  owners      = ["self"]
 #}
 
-data "aws_ami" "image" {
+data "aws_ami" "ami" {
   most_recent      = true
   name_regex       = "^Centos-8"
   owners           = ["973714476881"]

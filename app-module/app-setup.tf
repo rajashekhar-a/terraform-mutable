@@ -8,6 +8,9 @@ resource "null_resource" "app-deploy" {
     }
 
     inline = [
+      "yum install python3-pip -y",
+      "pip3 install pip --upgrade",
+      "pip3 install ansible",
       "ansible-pull -U https://github.com/rajashekhar-a/ansible.git roboshop-pull.yml -e ENV=${var.ENV} -e COMPONENT=${var.COMPONENT}"
     ]
   }
