@@ -81,9 +81,8 @@ resource "null_resource" "schema-apply-rabbitmq" {
       password = local.ssh_pass
     }
     inline = [
-      "yum install python3-pip -y",
-      "pip3 install pip --upgrade",
-      "pip3 install ansible",
+      "yum install python3.12-devel python3.12-pip -y",
+      "pip3.12 install ansible ansible-core==2.16 botocore boto3 python-jenkins",
       "ansible-pull -U https://github.com/rajashekhar-a/ansible.git roboshop-pull.yml  -e ENV=${var.ENV}-e COMPONENT=rabbitmq"
     ]
   }
