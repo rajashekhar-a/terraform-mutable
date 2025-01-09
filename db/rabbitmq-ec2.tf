@@ -83,7 +83,7 @@ resource "null_resource" "schema-apply-rabbitmq" {
     inline = [
       "yum install python3.12-devel python3.12-pip -y",
       "pip3.12 install ansible ansible-core==2.16 botocore boto3 python-jenkins",
-      "ansible-pull -U https://github.com/rajashekhar-a/ansible.git roboshop-pull.yml  -e ENV=${var.ENV}-e COMPONENT=rabbitmq"
+      "ansible-pull -U https://github.com/rajashekhar-a/ansible.git roboshop-pull.yml  -e ENV=${var.ENV} -e COMPONENT=rabbitmq"
     ]
   }
 }
